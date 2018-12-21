@@ -1,0 +1,527 @@
+#include <iostream>
+#include <conio.h>
+#include <fstream>
+#include <stdio.h>
+#include <windows.h>
+#include <string>
+
+using namespace std;
+
+//STRUCTURE FOR STUDENTS/STAFF
+struct student
+    {
+        char fname[25];
+        char lname[25];
+        char addr[50];
+        string qual;
+        string dep;
+        int id;
+        int age;
+        long double tel;
+        int marks;
+        char grade[4];
+        int course_code;
+        char course_title[25];
+    };
+
+
+
+
+
+int main()
+{
+   char dow;
+     int arr=0;
+     int arr2=0;
+     int arr3=0;
+
+     system("CLS"); //CLEARS SCREEN
+    cout<<"**************************************************************************************"<<endl;
+    cout<<"                          WELCOME TO BEST SCHOOL COMPLEX                              "<<endl;
+    cout<<"**************************************************************************************"<<endl;
+    cout<<"Enter any of the options below"<<endl;
+       cout << "1. Students Information" << endl;
+       cout << "2. Staff Information" << endl;
+       cout << "3. Exit Program" <<endl;
+
+       cout << endl;
+       cout << "\t Select Option:";
+
+       int choice;
+       cin >> choice;
+
+       switch(choice)  //FIRST SWITCH
+    {
+        case  1 :
+            system("CLS");
+         //FOR STUDENTS INFO
+         cout << "STUDENTS RECORDS.. \n";
+
+    do
+   {
+       student stud[20];
+
+     int rolcheck = 0;
+       int sw;
+       cout << "1. Create New Entry" << endl;
+       cout << "2. Delete Record" << endl;
+       cout << "3. Edit Record" << endl;
+       cout << "4. Display Record" << endl;
+       cout << "5. Jump to Main" <<endl;
+
+       cout << endl;
+       cout << "\t Select Option:";
+       cin >> sw;
+
+    switch(sw)  //SECOND SWITCH
+    {
+        case  1 :
+            //TO CREATE NEW STUDENT ENTRY
+           int id2;
+           int id1;
+
+        cout << "\n Enter the info of the student " << arr+1 << " is :" << endl;
+
+        cout << "\t Enter the ID No. "<<endl;
+        cin >> id1;
+
+    for(int j=0; j<=arr; j++){
+
+        id2=id1;
+    if(id2 == stud[j].id)
+    {
+        rolcheck = 1;
+         }
+    }
+    if(rolcheck!= 1){
+        stud[arr].id=id1;
+
+    cout <<"Enter your First Name"<<endl;
+    cin >> stud[arr].fname;
+
+    cout<<"Enter your Last Name"<<endl;
+    cin>>stud[arr].lname;
+
+    cout << "\t Enter the Age "<<endl;
+    cin >> stud[arr].age;
+
+    cout << "\t Enter the Address"<<endl;
+    cin >> stud[arr].addr;
+
+    cout << "\t Enter the Telephone No."<<endl;
+    cin >> stud[arr].tel;
+
+    cout << "\t Enter the Department"<<endl;
+    cin >> stud[arr].dep;
+
+    cout << "\t Enter the Course Code"<<endl;
+    cin >> stud[arr].course_code;
+
+    cout << "\t Enter the Course Title"<<endl;
+    cin >> stud[arr].course_title;
+
+    cout << "\t Enter the Marks"<<endl;
+    cin >> stud[arr].marks;
+
+    if(stud[arr].marks<=100 &&stud[arr]. marks>=90)
+        {cout<<"Grade=A";}
+    else if(stud[arr].marks<=89 && stud[arr].marks>=80)
+        {cout<<"Grade=B+";}
+    else  if(stud[arr].marks<=79 && stud[arr].marks>=70)
+        {cout<<"Grade=B-";}
+    else  if(stud[arr].marks<=69 && stud[arr].marks>=60)
+        {cout<<"Grade=C";}
+    else  if(stud[arr].marks<=59 && stud[arr].marks>=50)
+        {cout<<"Grade=D";}
+    else  if(stud[arr].marks<=49 && stud[arr].marks>=40)
+        {cout<<"Grade=E";}
+    else if(stud[arr].marks<=39 && stud[arr].marks>=00)
+        {cout<<"Grade=F";}
+        else
+        {
+        cout<<"Invalid Marks"<<endl;
+        }
+  arr=arr+1;
+    }
+    else
+    {
+        cout << "This Record Already Exists \n";
+    }
+
+
+            break;
+
+        case 2:
+            //TO DELETE STUDENTS RECORDS
+            cout << "\n Enter Student ID No. to Delete: " << endl;
+
+            cin >> id1;
+
+            for(int j=0; j<=arr; j++)
+            {
+
+                id2=id1;
+            if(id2==stud[j].id)
+            {
+                stud[j].id = 'd';
+                cout << "\t Record Successfully Deleted";
+                  }
+            }
+                    break;
+        case 3:
+            //TO EDIT STUDENT RECORDS
+            cout << "\n Enter Student ID No. to Edit: " << endl;
+
+
+            cin >>id1;
+
+        for(int j=0; j<=arr; j++)
+        {
+
+
+            id2=id1;
+        if(id2==stud[j].id)
+        {
+        cout << "\t ID No.: ";
+        cout << stud[j].id<<endl;
+        cout << "\t Last Name : ";
+        cout << stud[j].lname<<endl;
+        cout << "\t First Name : ";
+        cout << stud[j].fname<<endl;
+        cout << "\t Address : ";
+        cout << stud[j].addr<<endl;
+        cout << "\t Telephone No.: ";
+        cout << stud[j].tel<<endl;
+        cout << "\t Department: ";
+        cout << stud[j].dep<<endl;
+
+        cout << "\t Course Code: ";
+        cout << stud[j].course_code<<endl;
+
+        cout << "\t Course Title : ";
+        cout << stud[j].course_title;
+        cout << "\t Score : ";
+        cout << stud[j].marks;
+        cout << "\t Grade : ";
+        cout << stud[j].grade;
+
+
+    cout << "\n\t Re-Enter Info ";
+            cout << "\n\t First Name :";
+            cin >> stud[j].fname;
+
+            cout << "\n\t Last Name : ";
+            cin >> stud[j].lname;
+
+            cout << "\n\t Age : ";
+            cin >> stud[j].age;
+
+            cout << "\n\t Address : ";
+            cin >> stud[j].addr;
+
+            cout << "\n\t Telephone No.: ";
+            cin >> stud[j].tel;
+
+            cout << "\n\t Department :";
+            cin >> stud[j].dep;
+
+            cout << "\n\t Course Code : ";
+            cin >> stud[j].course_code;
+
+            cout << "\n\t Course Title : ";
+            cin >> stud[j].course_title;
+
+            cout << "\n\t Score : ";
+            cin >> stud[j].marks;
+
+            cout << "\n\t Grade : ";
+            cin >> stud[j].grade;
+
+               }
+
+    }
+    break;
+
+
+        case 4:
+            cout << "\n________________________________________________________________________________________________________" << endl;
+            for(int i=0; i<1; i++)
+            {
+                cout << "ID No. ||";
+                cout << " Name ||";
+                cout << " Address ||";
+                cout << "Telephone No. ||";
+                cout << " Department ||";
+                cout << " Course Code || ";
+                cout << " Course Title || ";
+                cout << " Score || ";
+                cout << " Grade ||";
+            for(int k=0;k<arr;k++)
+            {
+                if(stud[k].id!='d')
+                {
+                    cout << "\n";
+                      cout << " ";
+                    cout << stud[k].id;
+                    cout << "   || ";
+                    cout << stud[k].lname<<stud[k].fname;
+                    cout << " || ";
+                    cout << stud[k].addr;
+                    cout << "   ||  ";
+                    cout << stud[k].tel;
+                    cout << "  ||  ";
+                    cout << stud[k].dep;
+                    cout << " ||  ";
+                    cout << stud[k].course_code;
+                    cout << "       ||  ";
+                    cout << stud[k].course_title;
+                    cout << "            ||   ";
+                    cout << stud[k].marks;
+                    cout << "      ||   ";
+                    cout << stud[k].grade;
+                    cout << "   ||";
+                }
+
+            }
+            }
+
+            cout << "\n________________________________________________________________________________________________________\n";
+                break;
+
+
+        default:
+            cout << "\t You've selected a wrong Option";
+            break;
+       case 5:
+            //TO JUMP TO MAIN
+            {
+                break;
+            }
+
+          cout << "\n \n \t Do You want to Continue Again? [Yes/No]";
+          cin>> dow;
+            }
+
+        }  //END OF SECOND SWITCH
+            while(dow=='y' || dow=='Y');
+
+         break;
+
+
+        case 2:
+            cout << "STAFF RECORDS " << endl;
+
+            //update/delete/edit staff records
+             do
+   {
+       student stud[20];
+       int rolcheck = 0;
+       int sw;
+       cout << "1. Create New Entry" << endl;
+       cout << "2. Delete Record" << endl;
+       cout << "3. Edit Record" << endl;
+       cout << "4. Display Record" << endl;
+       cout << "4. Jump to Main" << endl;
+
+       cout << endl;
+       cout << "\t Select Option:";
+       cin >> sw;
+
+    switch(sw)  //THIRD SWITCH
+    {
+        //TO CREATE NEW STAFF ENTRY
+        case  1 :
+         int id2;
+         int id1;
+
+        cout << "\n Enter the info of the Staff " << arr2+1 << " is :" << endl;
+
+        cout << "\t Enter staff ID No.";
+        cin >> id1;
+
+    for(int j=0; j<=arr2; j++){
+
+        id2=id1;
+    if(id2 == stud[j].id)
+    {
+        rolcheck = 1;
+         }
+    }
+    if(rolcheck!= 1){
+        stud[arr2].id=id1;
+
+    cout <<"\t Enter First Name:  ";
+    cin >> stud[arr2].fname;
+
+    cout <<"\t Enter Last Name :";
+    cin >> stud[arr2].lname;
+
+    cout <<"\t Enter Staff Qualification : ";
+    cin >> stud[arr2].qual;
+
+    cout << "\t Enter the Address : ";
+    cin >> stud[arr2].addr;
+
+    cout << "\t Enter the Telephone No.:  ";
+    cin >> stud[arr2].tel;
+
+    cout << "\t Enter the Age : ";
+    cin >> stud[arr2].age;
+    arr2=arr2+1;
+    }
+    else
+    {
+        cout << "Record Already Exist \n";
+    }
+
+
+            break;
+
+        case 2:
+            //TO DELETE STAFF RECORDS
+            cout << "\n Enter Staff ID No." << endl;
+
+            cin >> id1;
+
+            for(int j=0; j<=arr2; j++)
+            {
+
+                id2=id1;
+            if(id2==stud[j].id)
+            {
+                stud[j].id = 'd';
+                cout << "\t Record Successfully Deleted";
+                  }
+            }
+                    break;
+        case 3:
+            //TO EDIT STAFF RECORDS
+            cout << "\n Enter Staff ID No. " << endl;
+            cin >>id1;
+
+        for(int j=0; j<=arr; j++)
+        {
+
+
+            id2=id1;
+        if(id2==stud[j].id)
+        {
+        cout << "\t Staff ID No.: ";
+        cout << stud[j].id<<endl;
+        cout << "\t Staff First Name : ";
+        cout << stud[j].fname<<endl;
+        cout << "\t Staff Last Name : ";
+        cout << stud[j].lname<<endl;
+        cout << "\t Staff Qualification : ";
+        cout << stud[j].qual<<endl;
+        cout << "\t Courses : ";
+        cout << stud[j].course_title<<endl;
+        cout << "\t Address : ";
+        cout << stud[j].addr<<endl;
+        cout << "\t Telephone No.: ";
+        cout << stud[j].tel<<endl;
+        cout << "\t Age :";
+        cout << stud[j].age<<endl;
+
+
+    cout << "\n\t Re-Enter Info ";
+            cout << "\n\t Staff ID No.:";
+            cin >> stud[j].id;
+
+            cout << "\n\t Staff First Name:"<<endl;
+            cin >> stud[j].fname;
+
+            cout << "\t Staff Last Name:"<<endl;
+            cin>> stud[j].lname;
+
+            cout << "\t Staff Qualification: "<<endl;
+            cin>> stud[j].qual;
+
+            cout << "\n\t Enter the Address"<<endl;
+            cin >> stud[j].addr;
+
+            cout << "\n\t Enter the Telephone No."<<endl;
+            cin >> stud[j].tel;
+
+            cout << "\n\t Enter the Age"<<endl;
+            cin >> stud[j].age;
+               }
+        }
+
+                break;
+
+            case 4:
+                //DISPLAYING OF STAFF INFORMATION
+            cout << "\n********************************************************************************************************************" << endl;
+            for(int i=0; i<1; i++)
+            {
+                cout << "ID No. |";
+                cout << " Name |";
+                cout << " Address |";
+                cout << "Telephone no |";
+                cout << " Age |";
+            for(int k=0;k<arr;k++)
+            {
+                if(stud[k].id!='d')
+                {
+                    cout << "\n";
+                      cout << " ";
+                    cout << stud[k].id;
+                    cout << "   | ";
+                    cout << stud[k].qual<<stud[k].lname<<stud[k].fname;
+                    cout << " | ";
+                    cout << stud[k].addr;
+                    cout << "   |  ";
+                    cout << stud[k].tel;
+                    cout << "  |  ";
+
+                    cout << stud[k].age;
+                    cout << "   |";
+                }
+
+            }
+            }
+
+            cout << "\n***********************************************************************************************\n";
+
+                break;
+
+
+        default:
+            cout << "\t Invalid Option";
+            break;
+
+            case 5:
+                //TO JUMP TO MAIN
+                {
+                    break;
+                }
+
+          cout << "\n \n \t Do You want to Continue Again? [Yes/No]";
+          cin>> dow;
+            }
+          }  //END OF THIRD SWITCH
+
+            while(dow=='y' || dow=='Y');
+
+            break;
+
+            case 3:
+                //TO EXIT GROUP
+      {
+          break;
+
+      }
+
+
+    return 0;
+    getch();
+
+
+
+
+    }  //END OF FIRST SWITCH
+
+
+} //END OF MAIN FUNCTION
+
